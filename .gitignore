@@ -1,0 +1,66 @@
+# Claude Code 工具使用的檔案夾
+.claude/
+.claude-flow/
+@.claude/
+@.claude-flow/
+.swarm/
+.claude-voice/
+
+# 臨時和狀態檔案
+*.pid
+*.log
+*_state.json
+notification_request.json
+.voice-memory-state.json
+.claude-voice-config.json
+
+# Python 虛擬環境
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 用戶配置檔案
+config.json
+claude_instances.json
+.claude-voice-config.json
+
+# 系統檔案
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE 檔案
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 臨時測試檔案
+test_*.py
+*_test.py
+temp_*

@@ -1,0 +1,36 @@
+{
+  "assistant_name": "小西",
+  "mode": "normal",
+  "voice_rate": 180,
+  "voice_language": "zh-TW",
+  "emotional_prefix": true,
+  "auto_detect_audio": true,
+  "auto_start_voice_input": false,
+  "prefixes": {
+    "urgent": "快來看看！",
+    "gentle": "嗨，打擾一下，",
+    "excited": "太棒了！",
+    "worried": "糟糕，",
+    "thinking": "嗯...讓我想想，"
+  },
+  "contextual_messages": {
+    "blocked": "{name}被阻塞了，需要您的協助",
+    "need_help": "{name}需要您的協助",
+    "task_completed": "{name}已完成任務",
+    "error": "{name}遇到錯誤，需要您檢查",
+    "git_conflict": "發現 Git 衝突，需要您決定如何處理",
+    "test_failed": "測試失敗了，需要您檢查錯誤訊息",
+    "build_error": "建置過程出錯，可能需要調整設定",
+    "dependency_issue": "套件相依性問題，需要您確認版本",
+    "permission_denied": "權限不足，需要您授權",
+    "file_not_found": "找不到必要的檔案，需要您提供路徑",
+    "need_user_input": "需要您提供更多資訊才能繼續",
+    "review_required": "程式碼變更完成，請您檢視",
+    "deployment_ready": "部署準備就緒，需要您確認",
+    "long_running": "任務執行時間較長，請耐心等待"
+  },
+  "check_interval": 5000,
+  "my_devices": [
+    "您的藍牙耳機名稱"
+  ]
+}
