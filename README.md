@@ -8,63 +8,86 @@
 ## 🌟 核心特色
 
 - 🔊 **智慧語音通知**: Claude Code 需要協助時自動語音提醒
-- 🎯 **多實例支援**: 支援同時管理多個 Claude Code 會話
-- ⚙️ **簡單設置**: 一鍵安裝，自動配置
-- 🗑️ **輕鬆移除**: 簡單清理，不留痕跡
+- 📁 **專案內建**: 每個專案都有獨立的語音通知系統
+- ⚙️ **自動初始化**: 一行指令就能為新專案設置語音通知
+- 🔍 **智慧尋找**: 自動找到 claude-code-voice 並複製到專案內
 - 🎵 **情境化通知**: 根據不同情況使用不同語音提示
 - 🔔 **系統通知整合**: 同時發送語音和視覺通知
-- 🗣️ **自由語音合成**: 可以說任何自訂內容，不限於預設模板
 
 ## 🚀 快速設置
 
-### 一鍵設置語音通知
-
-在您的 Claude Code 專案目錄中執行：
+### **第一步：一次性系統安裝**
 
 ```bash
-bash /Users/your_name/Documents/claude-code-voice/set_voice.sh
+# 一鍵安裝（一台電腦只需執行一次）
+curl -fsSL https://raw.githubusercontent.com/youlinhsieh/claude-code-voice/main/quick_install.sh | bash
 ```
 
-### 設置指定專案
+或手動安裝：
 
 ```bash
-bash /Users/your_name/Documents/claude-code-voice/set_voice.sh /path/to/your/project
+git clone https://github.com/youlinhsieh/claude-code-voice.git ~/Documents/claude-code-voice
 ```
+
+### **第二步：為新專案設置語音通知**
+
+**在 VSCode 打開新專案後，執行以下任一指令：**
+
+```bash
+# 方法一：直接初始化
+python3 ~/Documents/claude-code-voice/init_voice.py
+
+# 方法二：使用快速腳本
+curl -fsSL https://raw.githubusercontent.com/youlinhsieh/claude-code-voice/main/quick_init.sh | bash
+```
+
+✅ **設置完成後，專案內會出現：**
+
+- `.claude-voice/` 目錄（包含語音通知系統）
+- `CLAUDE.md` 更新（包含使用說明）
 
 ## 🎯 使用方法
 
-### Claude Code 語音通知使用
+### **在專案中使用語音通知**
 
-當您需要在 Claude Code 中通知用戶時，請使用：
+**設置完成後，在專案中直接使用：**
 
 ```bash
 # 需要用戶確認時（最重要！）
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "需要您確認是否執行" "urgent"
+python3 .claude-voice/claude_notify.py "需要您確認是否執行" "urgent"
 
 # 任務完成時
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "任務完成請檢視" "excited"
+python3 .claude-voice/claude_notify.py "任務完成請檢視" "excited"
 
 # 遇到錯誤時
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "發生錯誤需要協助" "worried"
+python3 .claude-voice/claude_notify.py "發生錯誤需要協助" "worried"
+
+# 需要等待時
+python3 .claude-voice/claude_notify.py "任務執行中請稍候" "thinking"
+
+# 一般通知
+python3 .claude-voice/claude_notify.py "需要您的協助" "gentle"
 ```
 
-### 管理和測試
+### **智慧路由系統**
+
+專案內的 `claude_notify.py` 會自動選擇最佳的語音助理：
+
+1. **全域助理** (`~/.claude-code-tools/`) - 如果已設置
+2. **本地助理** (`./.claude-voice/`) - 專案內建版本
+3. **直接路徑** (`~/Documents/claude-code-voice/`) - 備用方案
+
+### **測試和管理**
 
 ```bash
-# 測試語音功能
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py test
+# 測試語音通知功能
+python3 .claude-voice/claude_notify.py "測試語音通知" "excited"
 
-# 註冊新的 Claude Code 實例
-python3 /Users/your_name/Documents/claude-code-voice/register_claude.py
+# 檢查語音助理狀態
+python3 ~/Documents/claude-code-voice/detect_voice_assistant.py
 
-# 設置靜音模式（只有通知，無語音）
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py mode silent
-
-# 恢復正常模式（語音+通知）
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py mode full
-
-# 🗣️ 自由語音合成 - 說任何內容！
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py say "您想要說的任何內容"
+# 重新初始化專案語音通知
+python3 ~/Documents/claude-code-voice/init_voice.py
 ```
 
 ## 🚨 Claude Code 必須使用語音通知的情況
@@ -72,40 +95,55 @@ python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py say "您
 ### 1. 需要用戶確認時（最重要！）
 
 ```bash
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "需要您確認是否執行" "urgent"
+python3 .claude-voice/claude_notify.py "需要您確認是否執行" "urgent"
 ```
 
 ### 2. 遇到錯誤時
 
 ```bash
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "發生錯誤需要協助" "worried"
+python3 .claude-voice/claude_notify.py "發生錯誤需要協助" "worried"
 ```
 
 ### 3. 任務完成時
 
 ```bash
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "任務完成請檢視" "excited"
+python3 .claude-voice/claude_notify.py "任務完成請檢視" "excited"
 ```
 
 ### 4. 需要等待時
 
 ```bash
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "任務執行中請稍候" "thinking"
+python3 .claude-voice/claude_notify.py "任務執行中請稍候" "thinking"
 ```
 
 ### 5. 需要用戶輸入時
 
 ```bash
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "需要您提供更多資訊" "gentle"
+python3 .claude-voice/claude_notify.py "需要您提供更多資訊" "gentle"
 ```
 
-## 🎭 情緒參數
+## 🎭 情緒類型
 
-- `urgent` - 緊急情況，需要立即注意
-- `excited` - 興奮/成功，好消息
-- `worried` - 擔心/錯誤，有問題需要處理
-- `thinking` - 思考中，正在處理
-- `gentle` - 溫和提醒，一般通知
+- `urgent` - 緊急事件，需要立即注意
+- `excited` - 正面消息，完成通知
+- `worried` - 問題警告，需要檢查
+- `thinking` - 思考等待，正在處理
+- `gentle` - 一般通知，溫和提醒
+
+## 📋 專案結構
+
+設置完成後，專案內會有以下結構：
+
+```
+your-project/
+├── .claude-voice/
+│   ├── claude_notify.py        # 語音通知入口（智慧路由）
+│   ├── voice_assistant.py      # 語音助理核心
+│   ├── claude_notify_direct.py # 直接通知腳本
+│   ├── config.json            # 語音設定檔
+│   └── .claude-voice-config.json # 專案設定
+└── CLAUDE.md                   # 更新或建立使用說明
+```
 
 ## 🔇 模式設定
 
@@ -117,7 +155,7 @@ python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "需要您
 
 ```bash
 # 切換模式
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py mode [full|silent|off]
+python3 .claude-voice/voice_assistant.py mode [full|silent|off]
 ```
 
 **智慧耳機偵測**：當偵測到藍牙耳機連接時，即使在 silent 模式下也會自動啟用語音通知。
@@ -128,13 +166,13 @@ python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py mode [fu
 
 ```bash
 # 說任何您想要的內容
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py say "現在是下午三點，該休息一下了"
+python3 .claude-voice/voice_assistant.py say "現在是下午三點，該休息一下了"
 
 # Claude Code 也可以用這個功能說出任何訊息
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py say "程式碼分析完成，共找到 15 個潛在問題"
+python3 .claude-voice/voice_assistant.py say "程式碼分析完成，共找到 15 個潛在問題"
 
 # 調整語速（可選）
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py say "這是快速語音測試" --rate 200
+python3 .claude-voice/voice_assistant.py say "這是快速語音測試" --rate 200
 ```
 
 這個功能讓 Claude Code 可以：
@@ -159,10 +197,10 @@ python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py say "這
 
 ```bash
 # 測試語音功能
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py test
+python3 .claude-voice/voice_assistant.py test
 
 # 發送測試通知
-python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "測試語音通知" "excited"
+python3 .claude-voice/claude_notify.py "測試語音通知" "excited"
 ```
 
 ## 🔧 系統需求
@@ -202,7 +240,7 @@ python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "測試語
 say "語音測試成功"
 
 # 測試完整工具
-python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py test
+python3 .claude-voice/voice_assistant.py test
 ```
 
 ## 💡 重要提醒
@@ -223,6 +261,6 @@ Claude Code 必須在以下情況主動使用語音通知：
 
 1. **權限設定**: 在系統偏好設定中授權語音和通知權限
 2. **安裝工具**: `bash /Users/your_name/Documents/claude-code-voice/set_voice.sh`
-3. **測試功能**: `python3 /Users/your_name/Documents/claude-code-voice/voice_assistant.py test`
-4. **開始使用**: `python3 /Users/your_name/Documents/claude-code-voice/claude_notify.py "訊息" "情緒"`
-5. **註冊實例**: `python3 /Users/your_name/Documents/claude-code-voice/register_claude.py`
+3. **測試功能**: `python3 .claude-voice/voice_assistant.py test`
+4. **開始使用**: `python3 .claude-voice/claude_notify.py "訊息" "情緒"`
+5. **註冊實例**: `python3 ~/.claude-code-tools/register_claude.py`
