@@ -1,3 +1,35 @@
+#!/bin/bash
+# 自動執行 CLAUDE.md 設定的擴充腳本
+# 這個腳本會被其他安裝流程呼叫
+
+set -e
+
+echo "🔧 自動設定 CLAUDE.md 語音通知..."
+
+# 尋找 claude-code-voice 位置
+CLAUDE_VOICE_PATHS=(
+    "$PWD/claude-code-voice"
+    "$HOME/Documents/claude-code-voice"
+    "$HOME/claude-code-voice" 
+    "$HOME/Documents/claude-code-voice-main"
+)
+
+FOUND_PATH=""
+for path in "${CLAUDE_VOICE_PATHS[@]}"; do
+    if [[ -f "$path/init_voice.py" ]]; then
+        FOUND_PATH="$path"
+        break
+    elif [[ -f "$path/setup_claude_md.py" ]]; then
+        FOUND_PATH="$path"
+        break
+    fi
+done
+
+if [[ -z "$FOUND_PATH" ]]; then
+    echo "⚠️ 找不到 claude-code-voice，手動建立基本 CLAUDE.md"
+    
+    # 建立基本的 CLAUDE.md
+    cat > CLAUDE.md << 'EOF'
 # CLAUDE
 
 ## 需查看文件
@@ -15,13 +47,6 @@
 ### 🔴 最高優先級：第一次需要人工介入必須通知！例如 Bash command
 
 **絕對規則：當你第一次遇到需要用戶介入的情況時，必須立即發送語音通知，不要等待或假設用戶在看螢幕。**
-
-例如：
-
-- 第一次需要確認執行某操作時 → 立即通知
-- 第一次遇到錯誤需要處理時 → 立即通知  
-- 第一次完成任務需要測試時 → 立即通知
-- 第一次需要用戶選擇時 → 立即通知
 
 #### 🚨 何時必須使用語音通知
 
@@ -61,22 +86,6 @@ python3 ~/Documents/claude-code-voice/claude_notify.py "任務完成，請檢視
 python3 ~/Documents/claude-code-voice/claude_notify.py "程式碼分析完成，發現 X 個問題" "gentle"
 ```
 
-##### 4. 長時間執行需要等待時
-
-```bash
-# 正在執行耗時任務
-python3 ~/Documents/claude-code-voice/claude_notify.py "任務執行中，預計需要 X 分鐘" "thinking"
-
-# 下載或安裝進行中
-python3 ~/Documents/claude-code-voice/claude_notify.py "正在下載套件，請稍候" "gentle"
-```
-
-### 💡 使用提醒
-
-- **主動性**：不要等用戶問，有需要就立即通知
-- **及時性**：在關鍵時刻通知，避免用戶等待
-- **情境化**：根據情況選擇適當的情緒類型
-
 ### 🎭 情緒類型說明
 
 - `urgent` - 緊急事件，需要立即注意
@@ -100,3 +109,24 @@ python3 ~/Documents/claude-code-voice/claude_notify_direct.py "訊息" "情緒"
 ## 語音通知使用指引
 
 語音通知已啟用 - 請主動使用以提升用戶體驗
+EOF
+    
+    echo "✅ 基本 CLAUDE.md 已建立"
+    exit 0
+fi
+
+echo "✅ 找到 claude-code-voice: $FOUND_PATH"
+
+# 優先使用 init_voice.py
+if [[ -f "$FOUND_PATH/init_voice.py" ]]; then
+    echo "🚀 執行 init_voice.py..."
+    python3 "$FOUND_PATH/init_voice.py"
+elif [[ -f "$FOUND_PATH/setup_claude_md.py" ]]; then
+    echo "🚀 執行 setup_claude_md.py..."
+    python3 "$FOUND_PATH/setup_claude_md.py"
+else
+    echo "❌ 找不到設定腳本"
+    exit 1
+fi
+
+echo "✅ CLAUDE.md 語音通知設定完成！"
