@@ -124,7 +124,7 @@ def main():
     
     commands_to_try = [
         # 全域語音助理
-        ['python3', '~/.claude-code-tools/claude_notify.py', message, emotion],
+        ['python3', '~/Documents/claude-code-voice/claude_notify.py', message, emotion],
         
         # 本地語音助理
         ['python3', str(Path(__file__).parent / 'claude_notify_direct.py'), message, emotion],
@@ -249,7 +249,7 @@ def create_voice_config(voice_dir):
         'description': '專案內建語音通知系統',
         'auto_fallback': True,
         'fallback_order': [
-            'global (~/.claude-code-tools/)',
+            'global (~/Documents/claude-code-voice/)',
             'local (./.claude-voice/)', 
             'direct (~/Documents/claude-code-voice/)'
         ]

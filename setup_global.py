@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 設置全域語音助理系統
-在 ~/.claude-code-tools 建立符號連結指向主要語音助理
+為新系統設定為直接使用 ~/Documents/claude-code-voice
 """
 import os
 import shutil
@@ -47,8 +47,8 @@ def setup_global_voice():
     print(f"🎉 全域語音助理設置完成！")
     print(f"")
     print(f"現在可以在任何地方使用:")
-    print(f"  python3 ~/.claude-code-tools/claude_notify.py \"訊息\" \"情緒\"")
-    print(f"  python3 ~/.claude-code-tools/voice_assistant.py")
+    print(f"  python3 ~/Documents/claude-code-voice/claude_notify.py \"訊息\" \"情緒\"")
+    print(f"  python3 ~/Documents/claude-code-voice/voice_assistant.py")
 
 def create_global_executables(global_dir):
     """建立全域可執行檔"""

@@ -7,8 +7,8 @@ import sys
 import os
 from pathlib import Path
 
-# 添加工具路徑
-sys.path.insert(0, str(Path.home() / '.claude-code-tools'))
+# 添加工具路徑 - 使用當前專案目錄
+sys.path.insert(0, str(Path(__file__).parent))
 
 def main():
     """主函數"""
@@ -66,17 +66,17 @@ def print_usage():
 🔊 Claude Code 語音通知工具
 
 用法:
-  python3 ~/.claude-code-tools/claude_notify.py "訊息內容" [情緒類型]
+  python3 ~/Documents/claude-code-voice/claude_notify.py "訊息內容" [情緒類型]
 
 範例:
   # 基本通知
-  python3 ~/.claude-code-tools/claude_notify.py "需要您的協助"
+  python3 ~/Documents/claude-code-voice/claude_notify.py "需要您的協助"
   
   # 緊急通知
-  python3 ~/.claude-code-tools/claude_notify.py "遇到錯誤，請檢查" "urgent"
+  python3 ~/Documents/claude-code-voice/claude_notify.py "遇到錯誤，請檢查" "urgent"
   
   # 完成通知
-  python3 ~/.claude-code-tools/claude_notify.py "任務已完成" "excited"
+  python3 ~/Documents/claude-code-voice/claude_notify.py "任務已完成" "excited"
 
 情緒類型:
   - gentle   (預設) - 一般通知

@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 # 添加工具路徑
-sys.path.insert(0, str(Path.home() / '.claude-code-tools'))
+sys.path.insert(0, str(Path(__file__).parent))
 
 from claude_instances import ClaudeInstanceManager
 
@@ -78,14 +78,14 @@ def notify_instance_voice_setting(project_path, enable):
         
         config_data = {
             'voice_enabled': enable,
-            'daemon_endpoint': str(Path.home() / '.claude-code-tools'),
+            'daemon_endpoint': str(Path(__file__).parent),
             'last_updated': time.time(),
             'instructions': {
                 'enabled_message': '✅ 語音通知已啟用 - 當需要用戶協助時，請使用語音通知',
                 'usage_examples': [
-                    'python3 ~/.claude-code-tools/claude_notify.py "需要您的協助" "gentle"',
-                    'python3 ~/.claude-code-tools/claude_notify.py "遇到錯誤，需要檢查" "urgent"',
-                    'python3 ~/.claude-code-tools/claude_notify.py "任務完成，請檢視結果" "excited"'
+                    'python3 ~/Documents/claude-code-voice/claude_notify.py "需要您的協助" "gentle"',
+                    'python3 ~/Documents/claude-code-voice/claude_notify.py "遇到錯誤，需要檢查" "urgent"',
+                    'python3 ~/Documents/claude-code-voice/claude_notify.py "任務完成，請檢視結果" "excited"'
                 ],
                 'disabled_message': '🔇 語音通知已停用'
             }
@@ -118,22 +118,22 @@ def update_claude_md(project_dir, enable):
 
 ## 基本用法
 ```bash
-python3 ~/.claude-code-tools/claude_notify.py "訊息內容" "情緒類型"
+python3 ~/Documents/claude-code-voice/claude_notify.py "訊息內容" "情緒類型"
 ```
 
 ## 常用範例
 ```bash
 # 需要用戶協助
-python3 ~/.claude-code-tools/claude_notify.py "需要您的協助解決問題" "gentle"
+python3 ~/Documents/claude-code-voice/claude_notify.py "需要您的協助解決問題" "gentle"
 
 # 遇到錯誤
-python3 ~/.claude-code-tools/claude_notify.py "程式執行出錯，請檢查" "urgent"  
+python3 ~/Documents/claude-code-voice/claude_notify.py "程式執行出錯，請檢查" "urgent"  
 
 # 任務完成
-python3 ~/.claude-code-tools/claude_notify.py "任務已完成，請檢視結果" "excited"
+python3 ~/Documents/claude-code-voice/claude_notify.py "任務已完成，請檢視結果" "excited"
 
 # 等待輸入
-python3 ~/.claude-code-tools/claude_notify.py "請提供更多資訊以繼續" "thinking"
+python3 ~/Documents/claude-code-voice/claude_notify.py "請提供更多資訊以繼續" "thinking"
 ```
 
 ## 情緒類型
@@ -185,7 +185,7 @@ python3 ~/.claude-code-tools/claude_notify.py "請提供更多資訊以繼續" "
 
 def set_daemon_mode(mode):
     """設定 daemon 模式"""
-    config_file = Path.home() / '.claude-code-tools' / 'config.json'
+    config_file = Path(__file__).parent / 'config.json'
     
     try:
         config = {"mode": "normal", "assistant_name": "小西"}
@@ -221,7 +221,7 @@ def refresh_instances():
         print("🔄 正在重新整理實例列表...")
         result = subprocess.run([
             'python3', 
-            str(Path.home() / '.claude-code-tools' / 'manual_refresh.py')
+            str(Path(__file__).parent / 'manual_refresh.py')
         ], capture_output=True, text=True)
         
         print(result.stdout)

@@ -73,7 +73,7 @@ python3 .claude-voice/claude_notify.py "需要您的協助" "gentle"
 
 專案內的 `claude_notify.py` 會自動選擇最佳的語音助理：
 
-1. **全域助理** (`~/.claude-code-tools/`) - 如果已設置
+1. **全域助理** (`~/Documents/claude-code-voice/`) - 新系統預設位置
 2. **本地助理** (`./.claude-voice/`) - 專案內建版本
 3. **直接路徑** (`~/Documents/claude-code-voice/`) - 備用方案
 
@@ -263,4 +263,4 @@ Claude Code 必須在以下情況主動使用語音通知：
 2. **安裝工具**: `bash /Users/your_name/Documents/claude-code-voice/set_voice.sh`
 3. **測試功能**: `python3 .claude-voice/voice_assistant.py test`
 4. **開始使用**: `python3 .claude-voice/claude_notify.py "訊息" "情緒"`
-5. **註冊實例**: `python3 ~/.claude-code-tools/register_claude.py`
+5. **註冊實例**: `python3 ~/Documents/claude-code-voice/register_claude.py`

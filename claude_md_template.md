@@ -9,43 +9,43 @@
 #### 1. 需要用戶確認時（最重要！）
 ```bash
 # 需要用戶確認操作時
-python3 ~/.claude-code-tools/claude_notify.py "需要您確認是否執行這個操作" "urgent"
+python3 ~/Documents/claude-code-voice/claude_notify.py "需要您確認是否執行這個操作" "urgent"
 
 # 詢問用戶選擇時  
-python3 ~/.claude-code-tools/claude_notify.py "請問您希望如何處理這個問題" "thinking"
+python3 ~/Documents/claude-code-voice/claude_notify.py "請問您希望如何處理這個問題" "thinking"
 
 # 需要用戶輸入時
-python3 ~/.claude-code-tools/claude_notify.py "請提供您的設定選項" "gentle"
+python3 ~/Documents/claude-code-voice/claude_notify.py "請提供您的設定選項" "gentle"
 ```
 
 #### 2. 遇到錯誤或問題時
 ```bash
 # 程式錯誤需要檢查
-python3 ~/.claude-code-tools/claude_notify.py "遇到錯誤需要您檢查" "urgent"
+python3 ~/Documents/claude-code-voice/claude_notify.py "遇到錯誤需要您檢查" "urgent"
 
 # 測試失敗
-python3 ~/.claude-code-tools/claude_notify.py "測試失敗，請檢視錯誤" "worried"
+python3 ~/Documents/claude-code-voice/claude_notify.py "測試失敗，請檢視錯誤" "worried"
 
 # 建置失敗
-python3 ~/.claude-code-tools/claude_notify.py "建置失敗，需要修正" "urgent"
+python3 ~/Documents/claude-code-voice/claude_notify.py "建置失敗，需要修正" "urgent"
 ```
 
 #### 3. 任務完成需要檢視時
 ```bash
 # 任務完成
-python3 ~/.claude-code-tools/claude_notify.py "任務完成，請檢視結果" "excited"
+python3 ~/Documents/claude-code-voice/claude_notify.py "任務完成，請檢視結果" "excited"
 
 # 程式碼分析完成
-python3 ~/.claude-code-tools/claude_notify.py "程式碼分析完成，發現 X 個問題" "gentle"
+python3 ~/Documents/claude-code-voice/claude_notify.py "程式碼分析完成，發現 X 個問題" "gentle"
 ```
 
 #### 4. 長時間執行需要等待時
 ```bash
 # 正在執行耗時任務
-python3 ~/.claude-code-tools/claude_notify.py "任務執行中，預計需要 X 分鐘" "thinking"
+python3 ~/Documents/claude-code-voice/claude_notify.py "任務執行中，預計需要 X 分鐘" "thinking"
 
 # 下載或安裝進行中
-python3 ~/.claude-code-tools/claude_notify.py "正在下載套件，請稍候" "gentle"
+python3 ~/Documents/claude-code-voice/claude_notify.py "正在下載套件，請稍候" "gentle"
 ```
 
 ## 💡 使用提醒

@@ -27,9 +27,9 @@ class VoiceReminder:
             'reminder_count': 0,
             'auto_remind_on_start': True,
             'messages': [
-                "記得使用語音通知功能！如需用戶確認時請用: python3 ~/.claude-code-tools/claude_notify.py \"訊息\" \"urgent\"",
+                "記得使用語音通知功能！如需用戶確認時請用: python3 ~/Documents/claude-code-voice/claude_notify.py \"訊息\" \"urgent\"",
                 "提醒：遇到錯誤或任務完成時，請主動使用語音通知提醒用戶",
-                "語音通知小提醒：python3 ~/.claude-code-tools/claude_notify.py \"任務完成\" \"excited\"",
+                "語音通知小提醒：python3 ~/Documents/claude-code-voice/claude_notify.py \"任務完成\" \"excited\"",
                 "記得在需要用戶互動時使用語音通知，提升用戶體驗",
                 "定時提醒：使用 claude_notify.py 讓用戶知道任務狀態"
             ]
@@ -83,7 +83,7 @@ class VoiceReminder:
         # 發送語音提醒（如果語音助理可用）
         try:
             import subprocess
-            cmd = ['python3', '~/.claude-code-tools/claude_notify.py', 
+            cmd = ['python3', '~/Documents/claude-code-voice/claude_notify.py', 
                    f"定時提醒 #{self.config['reminder_count']}: {message}", 'gentle']
             subprocess.run(cmd, check=False, capture_output=True)
         except Exception:

@@ -22,7 +22,7 @@ class ClaudeVoiceAssistant:
         初始化語音助理
         
         Args:
-            config_path: 設定檔路徑，預設為 ~/.claude-code-tools/config.json
+            config_path: 設定檔路徑，預設為專案目錄下的 config.json
         """
         self.base_dir = Path(__file__).parent
         self.config_path = config_path or self.base_dir / 'config.json'

@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 # 確保能找到 claude_instances 模組
-sys.path.insert(0, str(Path.home() / '.claude-code-tools'))
+sys.path.insert(0, str(Path(__file__).parent))
 
 try:
     from claude_instances import register_current_instance, ClaudeInstanceManager
@@ -85,7 +85,7 @@ def show_status():
             # 顯示daemon設定
             try:
                 import json
-                config_path = Path.home() / '.claude-code-tools' / 'config.json'
+                config_path = Path(__file__).parent / 'config.json'
                 if config_path.exists():
                     with open(config_path, 'r', encoding='utf-8') as f:
                         config = json.load(f)

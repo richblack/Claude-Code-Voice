@@ -36,19 +36,19 @@ def setup_claude_code_hooks(project_dir=None):
     voice_hooks = {
         # 工具調用後的hook - 檢查是否需要語音通知
         "tool-result": {
-            "command": f"python3 ~/.claude-code-tools/hooks/tool_result_hook.py",
+            "command": f"python3 ~/Documents/claude-code-voice/hooks/tool_result_hook.py",
             "description": "檢查工具執行結果是否需要語音通知"
         },
         
         # 用戶提交問題後的hook - 自動註冊實例
         "user-prompt-submit": {
-            "command": f"python3 ~/.claude-code-tools/hooks/user_submit_hook.py",
+            "command": f"python3 ~/Documents/claude-code-voice/hooks/user_submit_hook.py",
             "description": "用戶提交新問題時自動註冊實例"
         },
         
         # Claude Code啟動後的hook
         "session-start": {
-            "command": f"python3 ~/.claude-code-tools/hooks/session_start_hook.py '{project_path}'",
+            "command": f"python3 ~/Documents/claude-code-voice/hooks/session_start_hook.py '{project_path}'",
             "description": "Claude Code會話開始時自動註冊到語音助理"
         }
     }

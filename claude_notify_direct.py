@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 
 # 添加工具路徑
-sys.path.insert(0, str(Path.home() / '.claude-code-tools'))
+sys.path.insert(0, str(Path(__file__).parent))
 
 def main():
     """主函數"""

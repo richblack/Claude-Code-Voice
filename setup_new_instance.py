@@ -9,7 +9,7 @@ import shutil
 from pathlib import Path
 
 # 添加工具路徑
-sys.path.insert(0, str(Path.home() / '.claude-code-tools'))
+sys.path.insert(0, str(Path(__file__).parent))
 
 def setup_instance_for_voice(project_path=None):
     """為實例設置語音通知功能"""
@@ -138,9 +138,9 @@ def setup_instance_for_voice(project_path=None):
     print("\n📋 現在您可以使用以下命令發送語音通知：")
     print(f"   python3 claude_notify.py \"你的訊息\" \"情緒類型\"")
     print("\n💡 或者使用完整路徑：")
-    print(f"   python3 ~/.claude-code-tools/claude_notify.py \"你的訊息\" \"情緒類型\"")
+    print(f"   python3 ~/Documents/claude-code-voice/claude_notify.py \"你的訊息\" \"情緒類型\"")
     print("\n🔍 查看所有實例狀態：")
-    print(f"   python3 ~/.claude-code-tools/manage_instances.py list")
+    print(f"   python3 ~/Documents/claude-code-voice/manage_instances.py list")
     
     return True
 

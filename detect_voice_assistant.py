@@ -13,7 +13,7 @@ def detect_voice_assistant():
     """
     
     # 優先順序：
-    # 1. 全域語音助理 (~/.claude-code-tools/)
+    # 1. 直接路徑 (~/Documents/claude-code-voice/)
     # 2. 本地語音助理 (./.claude-voice/)
     # 3. 直接路徑 (~/Documents/claude-code-voice/)
     
@@ -27,7 +27,7 @@ def detect_voice_assistant():
             'type': 'global',
             'path': global_tools / 'claude_notify.py',
             'description': '使用全域語音助理',
-            'usage': f'python3 ~/.claude-code-tools/claude_notify.py "訊息" "情緒"'
+            'usage': f'python3 ~/Documents/claude-code-voice/claude_notify.py "訊息" "情緒"'
         }
     
     # 2. 檢查本地語音助理  
@@ -68,7 +68,7 @@ def get_voice_notify_command(message, emotion="gentle"):
         return None, assistant_info
     
     if assistant_info['type'] == 'global':
-        cmd = f'python3 ~/.claude-code-tools/claude_notify.py "{message}" "{emotion}"'
+        cmd = f'python3 ~/Documents/claude-code-voice/claude_notify.py "{message}" "{emotion}"'
     elif assistant_info['type'] == 'local':
         cmd = f'python3 .claude-voice/claude_notify.py "{message}" "{emotion}"'
     elif assistant_info['type'] == 'direct':

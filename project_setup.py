@@ -24,7 +24,7 @@ def setup_project_voice(project_path=None):
     global_tools = Path.home() / '.claude-code-tools'
     if global_tools.exists():
         print(f"✅ 發現全域語音助理，建議直接使用")
-        print(f"🔊 使用方式: python3 ~/.claude-code-tools/claude_notify.py \"訊息\" \"情緒\"")
+        print(f"🔊 使用方式: python3 ~/Documents/claude-code-voice/claude_notify.py \"訊息\" \"情緒\"")
         
         # 建立專案設定檔指向全域助理
         create_project_config(project_dir, 'global')
@@ -114,7 +114,7 @@ def create_project_config(project_dir, voice_type):
         'voice_type': voice_type,  # 'global' 或 'local'
         'setup_date': str(Path().cwd()),
         'description': {
-            'global': '使用全域語音助理 (~/.claude-code-tools/)',
+            'global': '使用全域語音助理 (~/Documents/claude-code-voice/)',
             'local': '使用專案本地語音助理 (./.claude-voice/)'
         }.get(voice_type, '未知類型')
     }

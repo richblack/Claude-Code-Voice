@@ -111,7 +111,7 @@ def show_usage_instructions():
     print(f"  • 這些說明會持續提醒 Claude Code 使用語音功能")
     print(f"")
     print(f"🔊 測試語音通知:")
-    print(f"  python3 ~/.claude-code-tools/claude_notify.py \"專案設置完成\" \"excited\"")
+    print(f"  python3 ~/Documents/claude-code-voice/claude_notify.py \"專案設置完成\" \"excited\"")
 
 def setup_all_projects(base_path=None):
     """批量設置多個專案的 CLAUDE.md"""
