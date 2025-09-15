@@ -20,7 +20,7 @@
 
 ```bash
 # 一鍵安裝（一台電腦只需執行一次）
-curl -fsSL https://raw.githubusercontent.com/youlinhsieh/claude-code-voice/main/quick_install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/richblack/Claude-Code-Voice/main/quick_install.sh | bash
 ```
 
 或手動安裝：
@@ -38,7 +38,7 @@ git clone https://github.com/youlinhsieh/claude-code-voice.git ~/Documents/claud
 python3 ~/Documents/claude-code-voice/init_voice.py
 
 # 方法二：使用快速腳本
-curl -fsSL https://raw.githubusercontent.com/youlinhsieh/claude-code-voice/main/quick_init.sh | bash
+curl -fsSL https://raw.githubusercontent.com/richblack/Claude-Code-Voice/main/quick_init.sh | bash
 ```
 
 ✅ **設置完成後，專案內會出現：**

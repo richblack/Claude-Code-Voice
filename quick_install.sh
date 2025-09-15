@@ -34,7 +34,7 @@ mkdir -p "$HOME/Documents"
 
 # 下載 claude-code-voice
 echo "📥 下載 claude-code-voice..."
-git clone https://github.com/youlinhsieh/claude-code-voice.git "$INSTALL_DIR"
+git clone https://github.com/richblack/Claude-Code-Voice.git "$INSTALL_DIR"
 
 if [[ ! -d "$INSTALL_DIR" ]]; then
     echo "❌ 下載失敗"
@@ -55,7 +55,7 @@ echo "1. 在新專案中執行："
 echo "   python3 ~/Documents/claude-code-voice/init_voice.py"
 echo ""
 echo "2. 或使用快速腳本："
-echo "   curl -fsSL https://raw.githubusercontent.com/youlinhsieh/claude-code-voice/main/quick_init.sh | bash"
+echo "   curl -fsSL https://raw.githubusercontent.com/richblack/Claude-Code-Voice/main/quick_init.sh | bash"
 echo ""
 echo "3. 然後就可以使用語音通知："
 echo "   python3 .claude-voice/claude_notify.py \"訊息\" \"情緒\""

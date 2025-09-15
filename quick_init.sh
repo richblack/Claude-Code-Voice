@@ -31,7 +31,7 @@ done
 if [[ -z "$FOUND_PATH" ]]; then
     echo "❌ 找不到 claude-code-voice"
     echo "💡 請先執行："
-    echo "   curl -fsSL https://raw.githubusercontent.com/youlinhsieh/claude-code-voice/main/quick_install.sh | bash"
+    echo "   curl -fsSL https://raw.githubusercontent.com/richblack/Claude-Code-Voice/main/quick_install.sh | bash"
     exit 1
 fi
 
