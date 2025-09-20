@@ -43,4 +43,4 @@ python3 "$FOUND_PATH/init_voice.py"
 
 echo ""
 echo "🎉 設置完成！現在可以使用："
-echo "   python3 .claude-voice/claude_notify.py \"訊息\" \"情緒\""
+echo "   python3 ~/Documents/claude-code-voice/claude_notify.py \"訊息\" \"情緒\""

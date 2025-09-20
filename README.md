@@ -54,19 +54,19 @@ curl -fsSL https://raw.githubusercontent.com/richblack/Claude-Code-Voice/main/qu
 
 ```bash
 # 需要用戶確認時（最重要！）
-python3 .claude-voice/claude_notify.py "需要您確認是否執行" "urgent"
+python3 ~/Documents/claude-code-voice/claude_notify.py "需要您確認是否執行" "urgent"
 
 # 任務完成時
-python3 .claude-voice/claude_notify.py "任務完成請檢視" "excited"
+python3 ~/Documents/claude-code-voice/claude_notify.py "任務完成請檢視" "excited"
 
 # 遇到錯誤時
-python3 .claude-voice/claude_notify.py "發生錯誤需要協助" "worried"
+python3 ~/Documents/claude-code-voice/claude_notify.py "發生錯誤需要協助" "worried"
 
 # 需要等待時
-python3 .claude-voice/claude_notify.py "任務執行中請稍候" "thinking"
+python3 ~/Documents/claude-code-voice/claude_notify.py "任務執行中請稍候" "thinking"
 
 # 一般通知
-python3 .claude-voice/claude_notify.py "需要您的協助" "gentle"
+python3 ~/Documents/claude-code-voice/claude_notify.py "需要您的協助" "gentle"
 ```
 
 ### **智慧路由系統**
