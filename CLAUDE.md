@@ -85,16 +85,19 @@ python3 ~/Documents/claude-code-voice/claude_notify.py "正在下載套件，請
 - `worried` - 問題警告，需要檢查
 - `thinking` - 思考等待，正在處理
 
-### 🔧 備用方案
+### 🔧 語音通知架構
 
-如果全域語音助理不可用，可使用：
+純系統級架構 - 所有專案共用同一套語音工具：
 
 ```bash
-# 檢查語音助理狀態
-python3 ~/Documents/claude-code-voice/detect_voice_assistant.py
+# 統一使用方式（所有專案）
+python3 ~/Documents/claude-code-voice/claude_notify.py "訊息" "情緒"
 
-# 使用直接路徑
-python3 ~/Documents/claude-code-voice/claude_notify_direct.py "訊息" "情緒"
+# 測試語音功能
+python3 ~/Documents/claude-code-voice/voice_assistant.py test
+
+# 直接語音輸出
+python3 ~/Documents/claude-code-voice/voice_assistant.py say "任何內容"
 ```
 
 ## 語音通知使用指引

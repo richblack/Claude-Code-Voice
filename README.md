@@ -31,20 +31,19 @@ git clone https://github.com/youlinhsieh/claude-code-voice.git ~/Documents/claud
 
 ### **第二步：為新專案設置語音通知**
 
-**在 VSCode 打開新專案後，執行以下任一指令：**
+**在 VSCode 打開新專案後，執行初始化指令：**
 
 ```bash
-# 方法一：直接初始化
+# 純系統級初始化（推薦）
 python3 ~/Documents/claude-code-voice/init_voice.py
-
-# 方法二：使用快速腳本
-curl -fsSL https://raw.githubusercontent.com/richblack/Claude-Code-Voice/main/quick_init.sh | bash
 ```
 
 ✅ **設置完成後，專案內會出現：**
 
-- `.claude-voice/` 目錄（包含語音通知系統）
-- `CLAUDE.md` 更新（包含使用說明）
+- `CLAUDE.md`（包含使用說明）
+- `.claude-voice-config.json`（輕量配置檔案）
+
+**注意**：新版本採用純系統級架構，不會在專案內複製語音工具檔案，所有專案共用 `~/Documents/claude-code-voice/` 中的語音工具。
 
 ## 🎯 使用方法
 
@@ -69,25 +68,28 @@ python3 ~/Documents/claude-code-voice/claude_notify.py "任務執行中請稍候
 python3 ~/Documents/claude-code-voice/claude_notify.py "需要您的協助" "gentle"
 ```
 
-### **智慧路由系統**
+### **純系統級架構**
 
-專案內的 `claude_notify.py` 會自動選擇最佳的語音助理：
+所有專案統一使用同一套語音工具，確保：
 
-1. **全域助理** (`~/Documents/claude-code-voice/`) - 新系統預設位置
-2. **本地助理** (`./.claude-voice/`) - 專案內建版本
-3. **直接路徑** (`~/Documents/claude-code-voice/`) - 備用方案
+1. **一致性** - 所有專案使用相同版本的語音工具
+2. **易維護** - 只需更新一個位置
+3. **輕量化** - 專案內不複製大量檔案
 
 ### **測試和管理**
 
 ```bash
 # 測試語音通知功能
-python3 .claude-voice/claude_notify.py "測試語音通知" "excited"
+python3 ~/Documents/claude-code-voice/claude_notify.py "測試語音通知" "excited"
 
 # 檢查語音助理狀態
 python3 ~/Documents/claude-code-voice/detect_voice_assistant.py
 
 # 重新初始化專案語音通知
 python3 ~/Documents/claude-code-voice/init_voice.py
+
+# 更新所有專案配置
+~/Documents/claude-code-voice/update_all_projects.sh
 ```
 
 ## 🚨 Claude Code 必須使用語音通知的情況
@@ -132,17 +134,27 @@ python3 .claude-voice/claude_notify.py "需要您提供更多資訊" "gentle"
 
 ## 📋 專案結構
 
-設置完成後，專案內會有以下結構：
+### 系統級語音工具（一台電腦一份）
+
+```
+~/Documents/claude-code-voice/
+├── claude_notify.py           # 主要語音通知工具
+├── claude_notify_direct.py    # 直接語音通知（備用）
+├── voice_assistant.py         # 語音助理核心
+├── init_voice.py              # 專案初始化工具
+├── detect_voice_assistant.py  # 語音助理偵測
+├── update_all_projects.sh    # 專案更新腳本
+├── config.json               # 語音配置
+├── CLAUDE.md                 # 使用說明
+└── README.md                 # 專案說明
+```
+
+### 各專案內（輕量配置）
 
 ```
 your-project/
-├── .claude-voice/
-│   ├── claude_notify.py        # 語音通知入口（智慧路由）
-│   ├── voice_assistant.py      # 語音助理核心
-│   ├── claude_notify_direct.py # 直接通知腳本
-│   ├── config.json            # 語音設定檔
-│   └── .claude-voice-config.json # 專案設定
-└── CLAUDE.md                   # 更新或建立使用說明
+├── CLAUDE.md                          # 使用說明
+└── .claude-voice-config.json         # 輕量配置檔案
 ```
 
 ## 🔇 模式設定
