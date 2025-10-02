@@ -1,5 +1,7 @@
 # Claude Code 語音助理工具
 
+> [官方版本通知功能](https://claudelog.com/faqs/how-to-enable-claude-code-notifications/) 已提供了，本計劃功成身退,謝謝支持！
+
 一個為 Claude Code 設計的智慧語音通知系統，讓 Claude Code 在需要用戶互動時能主動語音通知您。
 
 > **⚠️ 注意：此工具僅支援 macOS**  
